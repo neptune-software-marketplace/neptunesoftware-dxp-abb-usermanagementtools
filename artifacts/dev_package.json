@@ -1,0 +1,55 @@
+{
+	"id": "fee847de-b784-4d3a-98fa-790cd6e49c48",
+	"createdAt": "2023-07-03T15:23:43.000Z",
+	"createdBy": "admin",
+	"git": {
+		"remote": "https://github.com/neptune-software-marketplace/neptunesoftware-dxp-abb-usermanagementtools"
+	},
+	"name": "neptunesoftware-dxp-abb-usermanagementtools",
+	"description": null,
+	"ver": "23.7.3.1625",
+	"enableCICD": true,
+	"apps": [
+		{
+			"id": "efcad691-1caf-4746-9453-c47fba99eb7d",
+			"application": "p9_bulkuserupload_api",
+			"title": "Admin - User CSV uploader",
+			"description": ""
+		},
+		{
+			"id": "738c4656-dee3-4bc9-a938-5f7cd10aec29",
+			"application": "p9_bulkusersdelete_export",
+			"title": "Admin - Bulk User Delete",
+			"description": ""
+		}
+	],
+	"api": [],
+	"odataSource": [],
+	"odataMock": [],
+	"dictionary": [],
+	"jsclass": [],
+	"jsscript_group": [],
+	"theme": [],
+	"pdf": [],
+	"rulesengine": [],
+	"reports": [],
+	"api_authentication": [],
+	"api_group": [],
+	"tile": [],
+	"category": [],
+	"launchpad": [],
+	"certificates": [],
+	"role": [],
+	"systems": [],
+	"doc": [],
+	"wf_notifications": [],
+	"department": [],
+	"script_scheduler": [],
+	"wf_definition": [],
+	"connector": [],
+	"events": [],
+	"media_library": [],
+	"code_snippets": [],
+	"wf_determination": [],
+	"wf_taskaction": []
+}

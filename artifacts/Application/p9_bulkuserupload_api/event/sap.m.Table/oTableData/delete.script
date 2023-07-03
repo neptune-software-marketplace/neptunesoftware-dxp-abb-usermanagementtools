@@ -1,0 +1,14 @@
+var deleteItem = oEvent.getParameter("listItem");
+var context = deleteItem.getBindingContext();
+var dataObj = context.getObject(context.getPath());
+
+var keyFields = [];
+var valueFields = [];
+
+$.each(dataObj, function(key, value) {
+    
+    keyFields.push(key);
+    valueFields.push(value);
+});
+
+ModelData.Delete(oTableData, keyFields, valueFields);

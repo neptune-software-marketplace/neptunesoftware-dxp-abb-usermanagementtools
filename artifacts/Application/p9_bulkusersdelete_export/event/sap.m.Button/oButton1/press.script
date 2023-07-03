@@ -1,0 +1,18 @@
+var selectedItems = oTable.getSelectedItems();
+var selectedUsers = [];
+if (selectedItems.length === 0) {
+    sap.m.MessageToast.show("Please select the users to delete !");
+    return;
+}
+
+$.each(selectedItems, function(i, item) {
+    selectedUsers.push(item.getBindingContext().getObject());
+});
+
+progcount = 0;
+var chunked = chunk(selectedUsers, 1);
+chunklength = chunked.length;
+oButton2.setVisible(false);
+oDialog.open();
+setProgress(0, selectedUsers.length);
+deleteUsers(chunked, 0);

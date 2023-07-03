@@ -1,0 +1,2 @@
+const xls = new XlsExport(modeloTable.oData, "User List");
+xls.exportToXLS('Users.xls');

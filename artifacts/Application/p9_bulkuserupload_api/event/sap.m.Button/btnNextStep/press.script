@@ -1,0 +1,56 @@
+switch (oWizard.getCurrentStep()) {
+
+    case "wizstepLoadCSV":
+
+        fileName = fuCSV.getValue();
+
+        if (fileName === "") {
+            sap.m.MessageToast.show("Please select a file to upload !");
+            break;
+        }
+
+        oApp.setBusy(true);
+
+        var oParamDataSep = new sap.ui.unified.FileUploaderParameter({
+            name: "separator",
+            value: selSeparator.getSelectedKey()
+        });
+        var oParamHasHeaderRow = new sap.ui.unified.FileUploaderParameter({
+            name: "hasheaderrow",
+            value: true
+        });
+
+        fuCSV.addParameter(oParamDataSep);
+        fuCSV.addParameter(oParamHasHeaderRow);
+        fuCSV.upload();
+        break;
+
+    case "wizstepReviewData":
+    
+        oWizard.nextStep();
+        var chunked = chunk(modeloTableData.oData, chunksize);
+        chunklength = chunked.length;
+
+        setProgress(0, modeloTableData.oData.length);
+        btnReset.setEnabled(false);
+        btnNextStep.setEnabled(false);
+        saveData(chunked, 0);
+
+        objstatUpload.setState("Warning");
+        objstatUpload.setText("Running");
+        objhdrTable.setTitle(tableName);
+        objAttr.setText(fileName);
+        objhdrTable.setNumber(tabData.length);
+        break;
+        
+    case "wizStepUploadData":
+        oWizard.nextStep();        
+        btnNextStep.setText("Finish");
+        modeloTableResults.setData(resultArr);
+        modeloTableResults.refresh();
+        break;
+        
+    case "wizStepReviewResults":        
+        resetAll();
+        break;
+}

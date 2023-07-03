@@ -1,0 +1,31 @@
+oApp.setBusy(false);
+var responseRaw = oEvent.getParameter('responseRaw');
+var result = JSON.parse(responseRaw).result;
+tabData = JSON.parse(responseRaw).tableData;
+tableHeader = JSON.parse(responseRaw).tableHeader;
+var delimiter = JSON.parse(responseRaw).delimiter;
+
+tabData.forEach(function (user) {
+    if (typeof user.username !== "undefined") {
+        user.username = user.username.toLowerCase();
+    }
+});
+
+if (result.statusCode === 0) {
+    if(tabData.length === 0){
+        sap.m.MessageToast.show("The uploaded file does not have any user data !");
+        return;
+    }    
+    if (selSeparator.getSelectedKey() === 'detect') {
+        sap.m.MessageToast.show("Delimiter detected - ' " + delimiter + " '");
+    }
+    if (JSON.stringify(tableHeader) == JSON.stringify(userHeader)) {
+        buildDataTable();
+        oWizard.nextStep();
+    } else {
+        sap.m.MessageToast.show("Uploaded file does not match the user upload template !");
+    }
+
+} else {
+    sap.m.MessageToast.show("Error parsing CSV: " + result.statusText);
+}
